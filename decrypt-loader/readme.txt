@@ -15,8 +15,8 @@ It is better to save them to a secret place as it is mentioned below.
 4. mvn clean install -Dtask=encrypt -DencryptionKey=XYZ -DfilePath=D:\ClassForEncryption.class
 	Creates D:\ClassForEncryption.class.encrypted with the encryptionKey.
 
-7. mvn clean install -Dtask=decrypt -DencryptionKey=XYZ -DfilePath=D:\ClassForEncryption.class.encrypted
+5. mvn clean install -Dtask=decrypt -DencryptionKey=XYZ -DfilePath=D:\ClassForEncryption.class.encrypted
 	Decryptes D:\ClassForEncryption.class.encrypted with the encryptionKey.
 
-8. mvn clean install -Dtask=decrypt -DencryptionKey=invalidkey -DfilePath=D:\ClassForEncryption.class.encrypted
+6. mvn clean install -Dtask=decrypt -DencryptionKey=abc -DfilePath=D:\ClassForEncryption.class.encrypted
 	By using an incorrect encryption key, the program stops.
