@@ -1,8 +1,6 @@
 package secret_project;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.security.GeneralSecurityException;
 
 public class DecrypterClassLoader extends ClassLoader {
@@ -28,16 +26,16 @@ public class DecrypterClassLoader extends ClassLoader {
 	private Class<?> loadEncryptedClass(String name) throws ClassNotFoundException {
 		byte[] fileBytes = new FileBytesReader().read(filePath);
 		Encrypter encrypter = new Encrypter(encryptionKey);
+
 		try {
 			String decrypted = encrypter.decrypt(new String(fileBytes));
 			byte[] decryptedBytes = decrypted.getBytes();
-			
+
 			Class<?> clazz = defineClass(name, decryptedBytes, 0, decryptedBytes.length);
 			resolveClass(clazz);
 			return clazz;
 		} catch (GeneralSecurityException | IOException e) {
-			e.printStackTrace();
+			throw new ClassNotFoundException("Unsuccessful decryption!", e);
 		}
-		return null;
 	}
 }

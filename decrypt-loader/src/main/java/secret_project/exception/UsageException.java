@@ -7,4 +7,9 @@ public class UsageException extends Exception {
 	public UsageException(String message) {
 		super(message);
 	}
+	
+	@Override
+	public String toString() {
+		return getMessage();
+	}
 }
