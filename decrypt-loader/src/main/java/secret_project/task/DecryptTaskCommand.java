@@ -2,6 +2,8 @@ package secret_project.task;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import secret_project.SecretProjectStart;
 import secret_project.exception.UsageException;
@@ -9,6 +11,7 @@ import secret_project.loader.DecrypterClassLoader;
 
 public class DecryptTaskCommand implements TaskCommand {
 	
+	private static final Logger LOGGER = Logger.getLogger(DecryptTaskCommand.class.getName());
 	private static final String CLASS_TO_ENCRYPT = "secret_project.loader.ClassForEncryption";
 	private static final String SOME_METHOD = "someMethod";
 	private static final String MESSAGE_UNSUCCESSFUL_DECRYPTION = "Unsuccessful decryption. The program stops.";
@@ -17,7 +20,7 @@ public class DecryptTaskCommand implements TaskCommand {
 	@Override
 	public void runTask(TaskParameter taskParameter) throws UsageException {
 		Class<?> clazz = loadTheRequiredClass(taskParameter);
-		System.out.println(MESSAGE_SUCCESSFUL_DECRYPTION);
+		LOGGER.log(Level.INFO, MESSAGE_SUCCESSFUL_DECRYPTION);
 		invokeTheStaticMethod(clazz);
 	}
 	
