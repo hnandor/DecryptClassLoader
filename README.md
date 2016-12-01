@@ -10,9 +10,10 @@ It is better to save them to a secret place as it is mentioned below.
 1. mvn clean install -Dtask=build
 
 	If ClassForEncryption.java is available, this creates 
-	$WORKSPACE\decrypt-loader\target\classes\secret_project\loader\ClassForEncryption.class 
-	If java file not exists, copy the previously saved ClassForEncryption.java 
-	to decrypt-loader\src\main\java\secret_project\loader, then redo this step.
+	$WORKSPACE\decrypt-loader\target\classes\secret_project\loader\ClassForEncryption.class
+	
+	If java file doesn't exist, copy the previously saved ClassForEncryption.java to
+	decrypt-loader\src\main\java\secret_project\loader, then redo this step.
 
 2. copy ClassForEncryption.class file into e.g. D:\
 
